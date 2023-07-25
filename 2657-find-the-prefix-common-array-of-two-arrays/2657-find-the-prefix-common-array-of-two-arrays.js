@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 var findThePrefixCommonArray = function (A, B) {
-    const resultArr = [];
+  const resultArr = [];
   let alreadyPrefixedCount = 0;
   const map = new Map();
 
@@ -12,18 +12,8 @@ var findThePrefixCommonArray = function (A, B) {
     if (A[i] === B[i]) {
       alreadyPrefixedCount++;
     } else {
-      if (map.get(A[i])) {
-        alreadyPrefixedCount++;
-        map.delete(A[i]);
-      } else {
-        map.set(A[i], 1);
-      }
-      if (map.get(B[i])) {
-        alreadyPrefixedCount++;
-        map.delete(B[i]);
-      } else {
-        map.set(B[i], 1);
-      }
+        map.get(A[i]) ? alreadyPrefixedCount++ : map.set(A[i], 1)
+        map.get(B[i]) ? alreadyPrefixedCount++ : map.set(B[i], 1)
     }
     resultArr.push(alreadyPrefixedCount);
   }
