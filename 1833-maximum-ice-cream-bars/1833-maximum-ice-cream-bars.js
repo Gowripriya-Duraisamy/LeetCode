@@ -5,12 +5,21 @@
  */
 
 var maxIceCream = function(costs, coins) {
-     costs.sort((a,b) => a-b)
+    const freq = new Array(Math.max(...costs) + 1).fill(0);
+    costs.forEach(cost => freq[cost]++);
     let count = 0;
-    for(let i=0; i<costs.length; i++) {
-         coins = coins - costs[i];
-        if(coins >= 0) count++;
-        else break;
+    for(let i=0; i<freq.length; i++) {
+        if(freq[i] > 0) {
+            while(freq[i]) {
+                coins = coins -i;
+                if(coins >= 0) count++;
+                freq[i]--;
+            }
+            freq[i] = 0;
+            if(coins<=0) break;
+            
+        }
+        
     }
     return count;
 };
