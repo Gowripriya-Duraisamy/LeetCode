@@ -11,9 +11,7 @@ var frequencySort = function (s) {
     const resultString = []
     const sortedArr = [...map.entries()].sort((a, b) => b[1] - a[1]);
     for (const [key, value] of sortedArr) {
-        for (let i = 0; i < value; i++) {
-            resultString.push(key);
-        }
+            resultString.push(key.repeat(value));
     }
     return resultString.join('');
 };
