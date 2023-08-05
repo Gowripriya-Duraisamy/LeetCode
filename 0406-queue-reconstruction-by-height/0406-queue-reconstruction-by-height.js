@@ -3,7 +3,7 @@
  * @return {number[][]}
  */
 var reconstructQueue = function(people) {
-    people.sort((person1, person2) => person1[1] -person2[1]);
+    people.sort((person1, person2) => person1[0]=== person2[0] ?person1[1] -person2[1]: person2[0] - person1[0]);
 
     const resultPeople = [people[0]];
     for(let i=1; i<people.length; i++) {
