@@ -24,8 +24,7 @@ var mergeTrees = function(root1, root2) {
 
       return root1;
     }else if(!root1) {
-      root1 = root2;
-      return root1;
+      return root2;
     } else {
       return root1
     }
