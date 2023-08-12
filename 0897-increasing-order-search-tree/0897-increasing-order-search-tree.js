@@ -27,6 +27,7 @@ var increasingBST = function (root) {
             iRoot = iRoot.right;
         }
         inorderTraversal(bstRoot.right);
+        return;
     }
     inorderTraversal(root);
     return rootNode;
