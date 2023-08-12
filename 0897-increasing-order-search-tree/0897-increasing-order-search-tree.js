@@ -17,7 +17,7 @@ var increasingBST = function (root) {
         if (!bstRoot) {
             return;
         }
-        inorderTraversal(bstRoot.left, iRoot);
+        inorderTraversal(bstRoot.left);
         if (!iRoot) {
             iRoot = new TreeNode(bstRoot.val);
             rootNode = iRoot;
@@ -26,7 +26,7 @@ var increasingBST = function (root) {
             iRoot.right = new TreeNode(bstRoot.val);
             iRoot = iRoot.right;
         }
-        inorderTraversal(bstRoot.right, iRoot);
+        inorderTraversal(bstRoot.right);
     }
     inorderTraversal(root);
     return rootNode;
