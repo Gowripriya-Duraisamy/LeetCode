@@ -26,9 +26,7 @@ var evaluateTree = function(root) {
             if(leftValue && rightValue) return 1;
             return 0;
         }
-        else {
-          return bstRoot.val;
-        }
+        
       }
      }
       const result = postOrderTraversal(root);
