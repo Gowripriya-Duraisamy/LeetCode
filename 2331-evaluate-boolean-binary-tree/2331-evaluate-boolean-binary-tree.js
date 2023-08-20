@@ -13,8 +13,7 @@
 var evaluateTree = function(root) {
      const postOrderTraversal = (bstRoot) => {
         if(!bstRoot.left && !bstRoot.right) {
-          if(bstRoot.val === 0 || bstRoot.val === 1) return bstRoot.val;
-          return;
+         return bstRoot.val;
       }
       if(bstRoot.left && bstRoot.right) {
         const leftValue = postOrderTraversal(bstRoot.left);
