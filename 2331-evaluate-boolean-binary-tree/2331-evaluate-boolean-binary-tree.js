@@ -21,7 +21,7 @@ var evaluateTree = function(root) {
         if(bstRoot.val === 2 ) {
           if(leftValue || rightValue) return 1;
           return 0;
-        } else if(bstRoot.val === 3) {
+        } else {
             if(leftValue && rightValue) return 1;
             return 0;
         }
