@@ -14,12 +14,9 @@ var postorder = function(root) {
  const resultArr = [];
   const traverse = (node) => {
     if(!node) return;
-    let totalChildrenLength  = node.children.length;
-    let i = 0;
-    while(i < totalChildrenLength) {
-      traverse(node.children[i]);
-      i++;
-    }
+    for (let i=0; i < node.children.length; i++) {
+            traverse(node.children[i]);
+        }
     resultArr.push(node.val);
     return;
   }
