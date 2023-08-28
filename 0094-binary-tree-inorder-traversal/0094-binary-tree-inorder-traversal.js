@@ -14,9 +14,9 @@ var inorderTraversal = function(root) {
     const resultArr = [];
     const traverse = (node) => {
         if(!node) return;
-        node.left && traverse(node.left);
+         traverse(node.left);
          resultArr.push(node.val);
-        node.right && traverse(node.right);
+         traverse(node.right);
         return;
     }
     traverse(root);
