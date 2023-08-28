@@ -14,10 +14,9 @@ var preorder = function (root) {
     const resultArr = [];
     const traverse = (node) => {
         if(!node) return;
-        const totalChildrenLength = node.children.length;
-        resultArr.push(node.val);
+               resultArr.push(node.val);
         let i=0;
-        while (i < totalChildrenLength) {
+        while (i < node.children.length) {
             traverse(node.children[i]);
             i++;
         }
