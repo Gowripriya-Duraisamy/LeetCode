@@ -10,15 +10,12 @@
  * @param {TreeNode} root
  * @return {string}
  */
-var tree2str = function(root) {
-    const traverse = (node) => {
+var tree2str = function(node) {
       if(!node) return '';
-      const left = traverse(node.left);
-      const right = traverse(node.right);
+      const left = tree2str(node.left);
+      const right = tree2str(node.right);
       if(!left && !right) return `${node.val}`;
       if(!right) return `${node.val}(${left})`;
       return `${node.val}(${left})(${right})`;
       
-    }
-    return traverse(root);
 };
