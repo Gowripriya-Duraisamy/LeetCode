@@ -10,9 +10,7 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-
-
-var bstToGst = function (root) {
+const bstToGst = function (root) {
     let totalSum = 0;
     const traverse = node => {
         if (!node) return;
