@@ -11,7 +11,7 @@
  * @return {number}
  */
 var averageOfSubtree = function(root) {
-     if(!root) return 0;
+    if(!root) return 0;
     let count = 0;
     const traverse = (node) => {
       if(!node) return [];
