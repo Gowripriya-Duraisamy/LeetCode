@@ -15,16 +15,14 @@ var averageOfSubtree = function(root) {
     let count = 0;
     const traverse = (node) => {
       if(!node) return [];
-      const left = traverse(node.left);
-      const right = traverse(node.right);
-      const resultArr = [...left, ...right];
-      resultArr.push(node.val)
+      const resultArr = [node.val]
+      resultArr.push(...traverse(node.left));
+      resultArr.push(...traverse(node.right));
       let sum =0;
       for(let i=0; i < resultArr.length; i++){
         sum += resultArr[i];
       }
-      const average = Math.floor(sum  / resultArr.length);
-      if(average === node.val) count++;
+      Math.floor(sum  / resultArr.length) === node.val && count++;
       return resultArr;
     } 
     traverse(root);
