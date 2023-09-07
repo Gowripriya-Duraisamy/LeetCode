@@ -54,10 +54,6 @@ var balanceBST = function (root) {
     let treeNode = null;
    const traverseArr = arr => {
         if(!arr.length) return;
-        if(arr.length === 1) {
-            treeNode =  balanceInsert(arr[0], treeNode);
-            return;
-        }
         const midIndex =  arr.length % 2 === 0 ? (arr.length / 2) - 1 : Math.floor(arr.length / 2);
         treeNode = balanceInsert(arr[midIndex], treeNode);
         traverseArr(arr.slice(0, midIndex));
