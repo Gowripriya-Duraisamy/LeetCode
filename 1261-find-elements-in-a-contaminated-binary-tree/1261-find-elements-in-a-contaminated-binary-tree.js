@@ -36,8 +36,8 @@ FindElements.prototype.find = function(target) {
             isExists = true;
             return;
         }
-        traverse(node.left);
-        traverse(node.right);
+        node.left && traverse(node.left);
+        node.right && traverse(node.right);
         return;
     }
     traverse(this.root);
