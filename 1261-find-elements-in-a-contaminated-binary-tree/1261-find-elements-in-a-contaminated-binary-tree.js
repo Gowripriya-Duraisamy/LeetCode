@@ -11,15 +11,15 @@
  */
 
 var FindElements = function(root) {
-    this.root = root;
+    this.arr = [];
     const traverse = (node, parentVal) => {
         if(!node) return;
-        node.val = parentVal;
+        this.arr.push(parentVal)
         node.left && traverse(node.left, (2*parentVal) + 1);
         node.right && traverse(node.right, (2*parentVal)+ 2)
         return;
     }
-    traverse(this.root, 0);
+    traverse(root, 0);
     return this;
 };
 
@@ -28,20 +28,10 @@ var FindElements = function(root) {
  * @return {boolean}
  */
 FindElements.prototype.find = function(target) {
-    let isExists = false;
-    const traverse = (node) => {
-        if(!node) return;
-        if(!!isExists) return;
-        if(node.val === target) {
-            isExists = true;
-            return;
-        }
-        (!isExists && node.left) && traverse(node.left);
-        (!isExists && node.right) && traverse(node.right);
-        return;
+    for(let i=0; i< this.arr.length; i++) {
+        if(this.arr[i] === target) return true;
     }
-    traverse(this.root);
-    return isExists;
+    return false;
 };
 
 /** 
