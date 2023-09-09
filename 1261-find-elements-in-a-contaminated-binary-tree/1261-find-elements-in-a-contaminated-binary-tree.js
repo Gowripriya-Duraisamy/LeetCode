@@ -10,16 +10,23 @@
  * @param {TreeNode} root
  */
 
-var FindElements = function(root) {
+var FindElements = function (root) {
     this.arr = [];
-    const traverse = (node, parentVal) => {
-        if(!node) return;
-        this.arr.push(parentVal)
-        node.left && traverse(node.left, (2*parentVal) + 1);
-        node.right && traverse(node.right, (2*parentVal)+ 2)
+    const traverse = (node) => {
+        if (!node) return;
+        this.arr.push(node.val);
+        if (node.left) {
+            node.left.val = (2 * node.val) + 1;
+            traverse(node.left);
+        }
+        if (node.right) {
+            node.right.val = (2 * node.val) + 2
+            traverse(node.right)
+        }
         return;
     }
-    traverse(root, 0);
+    root.val = 0;
+    traverse(root);
     return this;
 };
 
@@ -27,9 +34,9 @@ var FindElements = function(root) {
  * @param {number} target
  * @return {boolean}
  */
-FindElements.prototype.find = function(target) {
-    for(let i=0; i< this.arr.length; i++) {
-        if(this.arr[i] === target) return true;
+FindElements.prototype.find = function (target) {
+    for (let i = 0; i < this.arr.length; i++) {
+        if (this.arr[i] === target) return true;
     }
     return false;
 };
