@@ -11,34 +11,20 @@
  * @return {TreeNode}
  */
 
-const storeDepths = (root) => {
-    const map = new Map();
-    const traverse = (node, level) => {
-        if (!node) return;
-        if (level % 2 === 0) {
-            const value = map.get(level) || [];
-            map.set(level, [...value, node.val]);
-        }
-        traverse(node.left, level + 1);
-        traverse(node.right, level + 1);
-        return;
-    };
-    traverse(root, 1);
-    return map;
-}
+
 var reverseOddLevels = function (root) {
-    const depth = storeDepths(root);
-    const traverse = (node, level) => {
-        if (!node) return;
-        if (level % 2 === 0) {
-            const val = depth.get(level);
-            node.val = val.pop();
+    const traverse = (node1, node2, level) => {
+        if (!node1 || !node2) return;
+        if (level % 2 !== 0) {
+            const temp = node1.val;
+            node1.val = node2.val;
+            node2.val = temp;
         }
-        traverse(node.left, level + 1);
-        traverse(node.right, level + 1);
+       traverse(node1.left, node2.right, level+1);
+       traverse(node1.right, node2.left, level+1)
         return;
     }
 
-    traverse(root, 1);
+    traverse(root.left, root.right, 1);
     return root;
 };
