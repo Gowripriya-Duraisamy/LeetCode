@@ -3,12 +3,16 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-    const filterArr = nums.filter(num => num!==0);
-    for(let i=0; i<nums.length ; i++) {
-        if(i < filterArr.length) {
-            nums[i] = filterArr[i];
-        } else {
-            nums[i] = 0;
-        }
+    const arrLen = nums.length;
+    let i=0;
+    while(i < nums.length) {
+        if(nums[i] === 0) {
+            nums.splice(i, 1)
+        }else i++;
+    }
+
+    while(i< arrLen) {
+        nums.push(0)
+        i++;
     }
 };
