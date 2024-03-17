@@ -26,8 +26,7 @@ var insert = function (intervals, newInterval) {
                     newInterval[1] = intervals[i][1];
                     returnInterval.push(newInterval);
                     returnInterval.push(...intervals.slice(i + 1));
-                    endCompleted = true;
-                    break;
+                   return returnInterval;
                 }
             } else {
                 returnInterval.push(intervals[i]);
@@ -36,19 +35,17 @@ var insert = function (intervals, newInterval) {
             if (newInterval[1] < intervals[i][0]) {
                 returnInterval.push(newInterval);
                 returnInterval.push(...intervals.slice(i));
-                endCompleted = true;
-                break;
+                return returnInterval;
             } else if (newInterval[1] <= intervals[i][1]) {
                 newInterval[1] = intervals[i][1];
                 returnInterval.push(newInterval);
                 returnInterval.push(...intervals.slice(i + 1));
-                endCompleted = true;
-                break;
+                return returnInterval;
             }
         }
     }
-    if (!startIndexCompleted || !endCompleted) {
+    
         returnInterval.push(newInterval);
-    }
+    
     return returnInterval;
 };
