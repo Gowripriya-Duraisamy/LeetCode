@@ -7,15 +7,11 @@ var insert = function (intervals, newInterval) {
     const returnInterval = [];
     let startIndexCompleted = false;
     let endCompleted = false;
-    if (!intervals.length) {
-        return [newInterval];
-    }
 
     for (let i = 0; i < intervals.length; i++) {
         if (!startIndexCompleted) {
             if (newInterval[1] < intervals[i][0]) {
-                returnInterval.push(newInterval);
-                returnInterval.push(...intervals.slice(i));
+                returnInterval.push(newInterval, ...intervals.slice(i));
                 return returnInterval;
             }
             if (newInterval[0] <= intervals[i][1]) {
@@ -24,8 +20,7 @@ var insert = function (intervals, newInterval) {
                     newInterval[0] >= intervals[i][0] ? intervals[i][0] : newInterval[0];
                 if (newInterval[1] <= intervals[i][1]) {
                     newInterval[1] = intervals[i][1];
-                    returnInterval.push(newInterval);
-                    returnInterval.push(...intervals.slice(i + 1));
+                    returnInterval.push(newInterval, ...intervals.slice(i + 1));
                    return returnInterval;
                 }
             } else {
@@ -33,13 +28,11 @@ var insert = function (intervals, newInterval) {
             }
         } else {
             if (newInterval[1] < intervals[i][0]) {
-                returnInterval.push(newInterval);
-                returnInterval.push(...intervals.slice(i));
+                returnInterval.push(newInterval, ...intervals.slice(i));
                 return returnInterval;
             } else if (newInterval[1] <= intervals[i][1]) {
                 newInterval[1] = intervals[i][1];
-                returnInterval.push(newInterval);
-                returnInterval.push(...intervals.slice(i + 1));
+                returnInterval.push(newInterval, ...intervals.slice(i + 1));
                 return returnInterval;
             }
         }
