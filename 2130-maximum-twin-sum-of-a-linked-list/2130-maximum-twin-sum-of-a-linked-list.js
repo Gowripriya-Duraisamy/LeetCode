@@ -9,11 +9,11 @@
  * @param {ListNode} head
  * @return {number}
  */
-var pairSum = function(head) {
-    if(!head) return 0;
+var pairSum = function (head) {
+    if (!head) return 0;
     let temp = head;
     let count = 0;
-    while(temp) {
+    while (temp) {
         count++;
         temp = temp.next;
     }
@@ -22,19 +22,20 @@ var pairSum = function(head) {
     count = 0;
     temp = head;
     const arr = [];
-    while(count < mid) {
+    while (count < mid) {
         arr.push(temp.val);
         temp = temp.next;
         count++;
     }
+
     let max = arr[0];
-    while(temp) {
-       const index = totalLen - 1 - count;
+    while (temp) {
+        const index = totalLen - 1 - count;
         arr[index] += temp.val;
         max = arr[index] > max ? arr[index] : max;
         temp = temp.next;
         count++;
     }
-    
+
     return max;
 };
