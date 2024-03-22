@@ -12,30 +12,22 @@
 var pairSum = function (head) {
     if (!head) return 0;
     let temp = head;
-    let count = 0;
-    while (temp) {
-        count++;
-        temp = temp.next;
-    }
-    const totalLen = count;
-    const mid = Math.floor(count / 2);
-    count = 0;
-    temp = head;
-    const arr = [];
-    while (count < mid) {
-        arr.push(temp.val);
-        temp = temp.next;
-        count++;
-    }
+    let fast = head;
+    let prev = null;
 
-    let max = arr[0];
-    while (temp) {
-        const index = totalLen - 1 - count;
-        arr[index] += temp.val;
-        max = arr[index] > max ? arr[index] : max;
-        temp = temp.next;
-        count++;
+    while (fast) {
+        fast = fast.next.next;
+        const rem = temp.next;
+        temp.next = prev;
+        prev = temp;
+        temp = rem;
     }
-
+    let max = 0;
+    while (temp) {
+        const val = temp.val + prev.val;
+        max = max > val ? max : val;
+        temp = temp.next;
+        prev = prev.next;
+    }
     return max;
 };
