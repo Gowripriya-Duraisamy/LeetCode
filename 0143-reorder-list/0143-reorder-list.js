@@ -25,9 +25,8 @@ var reorderList = function(head) {
         temp = temp.next;
         count++;
     };
-    let nextRem = rem.next;
+    let slow = rem.next;
     rem.next = null;
-    let slow = nextRem;
     let reverseHead = null
     
     while(slow) {
