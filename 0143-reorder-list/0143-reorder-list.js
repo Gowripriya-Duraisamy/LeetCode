@@ -9,34 +9,27 @@
  * @param {ListNode} head
  * @return {void} Do not return anything, modify head in-place instead.
  */
-var reorderList = function(head) {
-   let temp = head;
-    let count = 0;
-    while(temp) {
-        count++;
-        temp = temp.next;
-    }
-    const mid = count %2 ===0 ? Math.floor(count/2) : Math.ceil(count / 2);
-    count = 0;
-    temp = head;
+var reorderList = function (head) {
+    let temp = head;
+    let fast = head
     let rem = null;
-    while(count < mid) {
+    while (fast) {
         rem = temp;
         temp = temp.next;
-        count++;
-    };
+        fast = fast.next?.next;
+    }
     let slow = rem.next;
     rem.next = null;
     let reverseHead = null
-    
-    while(slow) {
+
+    while (slow) {
         const next = slow.next;
         slow.next = reverseHead;
         reverseHead = slow;
         slow = next;
     }
     temp = head;
-    while(temp && reverseHead ) {
+    while (temp && reverseHead) {
         const next = temp.next;
         const reverseNext = reverseHead.next;
         temp.next = reverseHead;
@@ -45,7 +38,7 @@ var reorderList = function(head) {
         temp = temp.next;
         reverseHead = reverseNext;
     }
-        
+
     return head;
-    
+
 };
