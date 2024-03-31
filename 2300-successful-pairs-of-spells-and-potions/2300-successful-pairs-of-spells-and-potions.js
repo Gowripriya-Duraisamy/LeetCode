@@ -24,10 +24,12 @@ var successfulPairs = function (spells, potions, success) {
   };
 
   potions = potions.sort((a, b) => a - b);
+    
   for (let i = 0; i < spells.length; i++) {
     const startVal = Math.ceil(success / spells[i]);
     const index = binarySearch(potions, startVal);
     spells[i] = index >= 0 ? potions.length - index : 0;
   }
+    
   return spells;
 };
