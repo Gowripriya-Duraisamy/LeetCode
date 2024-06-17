@@ -10,9 +10,10 @@ var judgeSquareSum = function(c) {
         else break;
     };
     let returnVal = false;
-    squareMap.forEach((_value, key) =>{
-        const checkVal = Math.abs(c - key);
-        if(squareMap.has(checkVal)) returnVal = true;
-    });
+     for(let i=0; i<= c; i++){
+        const checkVal = c -i*i
+        if(squareMap.has(checkVal)) return true;
+         if((i*i) > c) return false;
+    };
     return returnVal;
 };
