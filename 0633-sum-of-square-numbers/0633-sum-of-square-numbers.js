@@ -3,11 +3,11 @@
  * @return {boolean}
  */
 var judgeSquareSum = function(c) {
-    const maxNum = Math.ceil( Math.sqrt(c));
     const squareMap = new Map();
-    for(let i=0; i<= maxNum; i++){
+    for(let i=0; i<= c; i++){
         const sq = i*i
         if(sq <= c) squareMap.set(i*i, 1)
+        else break;
     };
     let returnVal = false;
     squareMap.forEach((_value, key) =>{
